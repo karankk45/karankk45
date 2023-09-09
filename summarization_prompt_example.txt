@@ -1,0 +1,37 @@
+{
+  "predictions": [
+    {
+      "citationMetadata": {
+        "citations": [
+          {
+            "startIndex": 1,
+            "endIndex": 137,
+            "url": "https://en.wikipedia.org/wiki/Stock_market"
+          }
+        ]
+      },
+      "content": " The efficient-market hypothesis (EMH) is a hypothesis in financial economics that states that asset prices reflect all available information.\nMany decades of empirical research on return predictability has found mixed evidence, with some studies finding a lack of predictability while others have found evidence of return predictors.",
+      "safetyAttributes": {
+        "scores": [
+          1
+        ],
+        "categories": [
+          "Finance"
+        ],
+        "blocked": false
+      }
+    }
+  ],
+  "metadata": {
+    "tokenMetadata": {
+      "outputTokenCount": {
+        "totalBillableCharacters": 287,
+        "totalTokens": 56
+      },
+      "inputTokenCount": {
+        "totalTokens": 500,
+        "totalBillableCharacters": 1579
+      }
+    }
+  }
+}

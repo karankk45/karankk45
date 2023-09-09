@@ -1,0 +1,33 @@
+{
+  "predictions": [
+    {
+      "citationMetadata": {
+        "citations": []
+      },
+      "safetyAttributes": {
+        "blocked": false,
+        "categories": [
+          "Finance",
+          "Health"
+        ],
+        "scores": [
+          0.6,
+          0.1
+        ]
+      },
+      "content": " 1. **What is your experience in managing programs?**\n2. **What are your strengths and weaknesses as a program manager?**\n3. **What is your approach to managing a program?**\n4. **How do you handle risks and challenges in a program?**\n5. **How do you communicate with stakeholders in a program?**\n6. **How do you measure the success of a program?**\n7. **What is your experience in working with cross-functional teams?**\n8. **What is your experience in managing budgets and resources?**\n9. **What is your experience in managing change in a program?**\n10. **What are your career goals as a program manager?**"
+    }
+  ],
+  "metadata": {
+    "tokenMetadata": {
+      "inputTokenCount": {
+        "totalBillableCharacters": 54,
+        "totalTokens": 12
+      },
+      "outputTokenCount": {
+        "totalTokens": 153,
+        "totalBillableCharacters": 505
+      }
+    }
+  }
+}

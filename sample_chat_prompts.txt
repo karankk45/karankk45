@@ -1,0 +1,50 @@
+{
+  "predictions": [
+    {
+      "citationMetadata": [
+        {
+          "citations": []
+        }
+      ],
+      "candidates": [
+        {
+          "content": " Yes, both The Lord of the Rings and The Hobbit are based on book series by J.R.R. Tolkien.",
+          "author": "1"
+        }
+      ],
+      "safetyAttributes": [
+        {
+          "categories": [
+            "Derogatory",
+            "Insult",
+            "Profanity",
+            "Religion & Belief",
+            "Sexual",
+            "Toxic"
+          ],
+          "scores": [
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.1
+          ],
+          "blocked": false
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "tokenMetadata": {
+      "inputTokenCount": {
+        "totalBillableCharacters": 182,
+        "totalTokens": 53
+      },
+      "outputTokenCount": {
+        "totalBillableCharacters": 73,
+        "totalTokens": 25
+      }
+    }
+  }
+}
