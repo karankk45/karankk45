@@ -17,6 +17,6 @@ SELECT
   protopayload_auditlog.servicedata_v1_bigquery.jobCompletedEvent.job.jobStatistics.queryOutputRowCount,
   severity
 FROM
-  `qwiklabs-gcp-00-2e19ec982d49.bq_logs.cloudaudit_googleapis_com_data_access_*`
+  `PROJECT_ID.bq_logs.cloudaudit_googleapis_com_data_access_*`
 ORDER BY
   startTime'
