@@ -1,0 +1,35 @@
+
+[Credentials]
+
+
+
+
+[Boto]
+
+
+https_validate_certificates = True
+
+
+
+[GoogleCompute]
+
+
+
+[GSUtil]
+
+
+content_language = en
+
+
+encryption_key=EN_KEY
+
+
+#decryption_key1=
+#decryption_key2=
+#decryption_key3=
+
+
+default_api_version = 2
+
+[OAuth2]
+
