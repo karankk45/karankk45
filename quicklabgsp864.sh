@@ -4,9 +4,9 @@ export BUCKET_NAME=$DEVSHELL_PROJECT_ID-bucket
 
 export PROJECT_ID=$DEVSHELL_PROJECT_ID
 
-git clone https://github.com/googleapis/nodejs-dlp
+git clone https://github.com/quiccklabs/Redacting-Sensitive-Data-with-Cloud-Data-Loss-Prevention.git
 
-cd nodejs-dlp/samples && npm install
+cd Redacting-Sensitive-Data-with-Cloud-Data-Loss-Prevention/quicklabgsp864/samples && npm install
 
 gcloud config set project $PROJECT_ID
 
