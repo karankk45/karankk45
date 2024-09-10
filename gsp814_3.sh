@@ -22,13 +22,12 @@ RESET=`tput sgr0`
 
 echo "${YELLOW}${BOLD}Starting${RESET}" "${GREEN}${BOLD}Execution${RESET}"
 
+export REGION="${ZONE%-*}"
 gcloud services enable datacatalog.googleapis.com
 
 echo "${YELLOW}${BOLD}Task 1. ${RESET}""${WHITE}${BOLD}Enable the Data Catalog API${RESET}" "${GREEN}${BOLD}Completed${RESET}"
 
 export PROJECT_ID=$(gcloud config get-value project)
-
-cd
 
 gsutil cp gs://spls/gsp814/cloudsql-mysql-tooling.zip .
 unzip cloudsql-mysql-tooling.zip
@@ -42,15 +41,15 @@ bash init-db.sh
 
 gcloud iam service-accounts create mysql2dc-credentials \
 --display-name  "Service Account for MySQL to Data Catalog connector" \
---project $DEVSHELL_PROJECT_ID
+--project $PROJECT_ID
 
 gcloud iam service-accounts keys create "mysql2dc-credentials.json" \
---iam-account "mysql2dc-credentials@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com"
+--iam-account "mysql2dc-credentials@$PROJECT_ID.iam.gserviceaccount.com"
 
-gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \
---member "serviceAccount:mysql2dc-credentials@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+--member "serviceAccount:mysql2dc-credentials@$PROJECT_ID.iam.gserviceaccount.com" \
 --quiet \
---project $DEVSHELL_PROJECT_ID \
+--project $PROJECT_ID \
 --role "roles/datacatalog.admin"
 
 cd infrastructure/terraform/
@@ -64,7 +63,7 @@ cd ~/cloudsql-mysql-tooling
 
 docker run --rm --tty -v \
 "$PWD":/data mesmacosta/mysql2datacatalog:stable \
---datacatalog-project-id=$DEVSHELL_PROJECT_ID \
+--datacatalog-project-id=$PROJECT_ID \
 --datacatalog-location-id=$REGION \
 --mysql-host=$public_ip_address \
 --mysql-user=$username \
@@ -73,6 +72,5 @@ docker run --rm --tty -v \
 
 echo "${YELLOW}${BOLD}Task 4. ${RESET}""${WHITE}${BOLD}MySQL to Dataplex${RESET}" "${GREEN}${BOLD}Completed${RESET}"
 
-echo "${RED}${BOLD}Congratulations${RESET}" "${WHITE}${BOLD}for${RESET}" "${GREEN}${BOLD}Completing the Lab !!!${RESET}"
 
 #-----------------------------------------------------end----------------------------------------------------------#
