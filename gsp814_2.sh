@@ -34,6 +34,7 @@ unzip cloudsql-postgresql-tooling.zip
 cd cloudsql-postgresql-tooling/infrastructure/terraform
 
 sed -i "s/us-central1/$REGION/g" variables.tf
+sed -i "s/$REGION-a/$ZONE/g" variables.tf
 
 cd ~/cloudsql-postgresql-tooling
 bash init-db.sh
