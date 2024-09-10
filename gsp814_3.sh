@@ -35,6 +35,7 @@ unzip cloudsql-mysql-tooling.zip
 cd cloudsql-mysql-tooling/infrastructure/terraform
 
 sed -i "s/us-central1/$REGION/g" variables.tf
+sed -i "s/$REGION-a/$ZONE/g" variables.tf
 
 cd ~/cloudsql-mysql-tooling
 bash init-db.sh
