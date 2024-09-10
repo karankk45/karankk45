@@ -22,14 +22,12 @@ RESET=`tput sgr0`
 
 echo "${YELLOW}${BOLD}Starting${RESET}" "${GREEN}${BOLD}Execution${RESET}"
 
+export REGION="${ZONE%-*}"
 gcloud services enable datacatalog.googleapis.com
 
 echo "${YELLOW}${BOLD}Task 1. ${RESET}""${WHITE}${BOLD}Enable the Data Catalog API${RESET}" "${GREEN}${BOLD}Completed${RESET}"
 
 export PROJECT_ID=$(gcloud config get-value project)
-
-cd
-
 gsutil cp gs://spls/gsp814/cloudsql-postgresql-tooling.zip .
 unzip cloudsql-postgresql-tooling.zip
 
@@ -42,15 +40,15 @@ bash init-db.sh
 
 gcloud iam service-accounts create postgresql2dc-credentials \
 --display-name  "Service Account for PostgreSQL to Data Catalog connector" \
---project $DEVSHELL_PROJECT_ID
+--project $PROJECT_ID
 
 gcloud iam service-accounts keys create "postgresql2dc-credentials.json" \
---iam-account "postgresql2dc-credentials@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com"
+--iam-account "postgresql2dc-credentials@$PROJECT_ID.iam.gserviceaccount.com"
 
-gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \
---member "serviceAccount:postgresql2dc-credentials@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+--member "serviceAccount:postgresql2dc-credentials@$PROJECT_ID.iam.gserviceaccount.com" \
 --quiet \
---project $DEVSHELL_PROJECT_ID \
+--project $PROJECT_ID \
 --role "roles/datacatalog.admin"
 
 cd infrastructure/terraform/
@@ -64,7 +62,7 @@ cd ~/cloudsql-postgresql-tooling
 
 docker run --rm --tty -v \
 "$PWD":/data mesmacosta/postgresql2datacatalog:stable \
---datacatalog-project-id=$DEVSHELL_PROJECT_ID \
+--datacatalog-project-id=$PROJECT_ID \
 --datacatalog-location-id=$REGION \
 --postgresql-host=$public_ip_address \
 --postgresql-user=$username \
